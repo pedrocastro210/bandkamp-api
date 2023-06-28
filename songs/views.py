@@ -7,6 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from .serializers import SongSerializer
 from albums.models import Album
 from rest_framework import generics
+from drf_spectacular.utils import extend_schema
 
 
 class SongView(generics.ListCreateAPIView):
@@ -15,6 +16,22 @@ class SongView(generics.ListCreateAPIView):
 
     queryset = Song.objects.all()
     serializer_class = SongSerializer
+
+    @extend_schema(
+        operation_id="songs_get",
+        description="Rota de listagem de músicas",
+        summary="Listar músicas",
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @extend_schema(
+        operation_id="songs_post",
+        description="Rota de criação de músicas",
+        summary="Criar músicas",
+    )
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         pk = self.kwargs.get("pk")
