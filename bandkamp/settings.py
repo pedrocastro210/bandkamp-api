@@ -177,6 +177,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Band Kamp",
+    "TITLE": "Band Kamp ",
     "DESCRIPTION": "API para gerenciamento de músicas",
+    "VERSION": "1.0.1",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
